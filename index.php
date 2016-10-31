@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    /*if(!isset($_SESSION["user_id"])){
+        header("location:index.php");
+    }*/
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,7 +47,9 @@
                             </div>
                         
                         </li>
-                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>SignIn</a>
+                        <?php if(!isset($_SESSION["firstname"])) {
+                                echo '
+                                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>SignIn</a>
                             <ul class="dropdown-menu">
                                <div style="width: 300px">
                                     <div class="panel panel-primary">
@@ -59,7 +68,26 @@
                                 </div>
                             </ul>
                         </li>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>SignUp</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>SignUp</a></li>';
+                            }else{
+    
+            
+                 echo '<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>';
+                     echo "Hi, ".$_SESSION["firstname"];
+                     
+                    echo '</a>
+                            <ul class="dropdown-menu">
+                               <li><a href="#">Change password</a></li>
+                               <li class="divider"></li>
+                               <li><a href="#" id="logout">Logout</a></li>
+                            </ul>';
+            ;
+}
+                            
+                            
+                        
+                        ?>
+                        
                     </ul>     
                 </div>
             </div>

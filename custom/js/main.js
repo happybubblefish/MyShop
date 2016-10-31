@@ -105,4 +105,43 @@ $(function () {
             }
         });
     });
+    
+    $("#login").click(function(event){
+        event.preventDefault();
+        
+        var email = $("#email").val();
+        var password = $("#password").val();
+        
+        $.ajax({
+            url: "account.php",
+            method: "POST",
+            data: { 
+                login: 1,
+                email: email,
+                password: password
+            },
+            success: function(data){
+                if(data === "success"){
+                    window.location.href = "index.php";
+                }
+            }
+        });
+    });
+    
+    $("#logout").click(function(event){
+        event.preventDefault();
+        
+        $.ajax({
+            url: "account.php",
+            method: "GET",
+            data: { 
+                logout: 1
+            },
+            success: function(data){
+                if(data === "destroyed"){
+                    window.location.href = "index.php";
+                }
+            }
+        });
+    });
 });
