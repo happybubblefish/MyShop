@@ -1,0 +1,21 @@
+.main-content{
+    margin-top: 80px;
+}
+
+/* Header */
+#search,
+#search_btn{
+    margin-top: 8px;
+}
+
+#search_btn{
+    margin-left: 5px;
+}
+
+.btn-add-to-cart{
+    float: right;
+}
+
+.images{
+    height: 200px;
+}
