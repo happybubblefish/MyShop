@@ -99,56 +99,6 @@
             </div>
         </header>
         
-        <div class="main-content">
-            <aside>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-2">
-                           <div id="get_category"></div>
-                            <!--<div class="nav nav-pills nav-stacked">
-                                <li class="active"><a href="#">Category</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Categories</a></li>
-                            </div>-->
-                            <div id="get_brand"></div>
-                             <!--<div class="nav nav-pills nav-stacked">
-                                <li class="active"><a href="#">Brand</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Categories</a></li>
-                            </div>-->
-                        </div>
-                        <div class="col-md-8">
-                            <div class="panel panel-info">
-                               <div id = "added-product-msg"></div>
-                                <div class="panel-heading">Products</div>
-                                <div class="panel-body">
-                                   <div id="get_product"></div>
-                                    <!--<div class="col-md-4">
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">Samsung Galaxy</div>
-                                            <div class="panel-body">
-                                                <img class="images" src="custom/imgs/Electronics/S6.jpg" alt="S6">
-                                            </div>
-                                            <div class="panel-heading">$500.00
-                                                <button class="btn btn-danger btn-add-to-cart btn-xs">Add to cart</button>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>-->
-                                </div>
-                                <div class="panel-footer">&copy; 2016</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-        </div>
-        
         
         
         

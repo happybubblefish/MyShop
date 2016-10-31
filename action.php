@@ -205,4 +205,39 @@
         echo 
             $total_count;
     }
+
+    /* Show cart */
+    if(isset($_GET["getCart"])){
+        if(isset($_SESSION["cart"])){        
+            $cart = $_SESSION["cart"];
+        
+            $keys = array_keys($cart);
+            $ser_no = 0;
+            foreach($keys as $pid){
+                $query = "SELECT * from product where product_id = '$pid'";
+                $run_query = mysqli_query($conn, $query);
+
+                if($row = mysqli_fetch_array($run_query)){
+                    $product_id = $row["product_id"];
+                    $product_title = $row["product_title"];
+                    $product_image = $row["product_image"];
+                    $product_price = $row["product_price"];
+                    $product_count = $cart[$pid];
+                    $ser_no = $ser_no + 1;
+                    
+                    echo "
+                        <div class='row'>
+                            <div class='col-md-2'>$ser_no</div>
+                            <div class='col-md-2'>$product_id</div>
+                            <div class='col-md-2'><img style='height:50px;' class='images' src='custom/imgs/$product_image'></div>
+                            <div class='col-md-2'>$product_title</div>
+                            <div class='col-md-2'>$product_count</div>
+                            <div class='col-md-2'>$product_price</div>
+                       </div>
+                       <li class='divider'></li>
+                    ";
+                }
+            }
+        }
+    }
 ?>

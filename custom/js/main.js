@@ -174,6 +174,13 @@ $(function () {
     $("#cart-btn").click(function(event){
         event.preventDefault();
         
-        
+        $.ajax({
+            url: "action.php",
+            method: "GET",
+            data: { getCart: 1},
+            success: function(data){
+                $("#panel-cart").html(data);
+            }
+        });
     });
 });
