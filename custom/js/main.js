@@ -144,4 +144,36 @@ $(function () {
             }
         });
     });
+    
+    $("body").on("click", ".btn-add-to-cart", function(event){
+        event.preventDefault();
+        var pid = $(this).attr("product_id");
+        
+        $.ajax({
+            url: "action.php",
+            method: "POST",
+            data: {
+                addToCart: 1,
+                pid: pid
+            },
+            success: function(data){
+                if(data > 0){
+                    
+                var content = "<div class='alert alert-success'> " +
+                                "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" + 
+                                "<b>Product added successfully." + " Your cart has " + data + " item(s)." + "</b>" +  
+                              "</div>";
+                }
+                
+                $("#added-product-msg").html(content);
+                $(".badge").html(data);
+            }
+        });
+    });
+    
+    $("#cart-btn").click(function(event){
+        event.preventDefault();
+        
+        
+    });
 });

@@ -1,8 +1,5 @@
 <?php 
     session_start();
-    /*if(!isset($_SESSION["user_id"])){
-        header("location:index.php");
-    }*/
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +27,7 @@
                         <li><button class="btn btn-primary" id="search_btn">Search</button></li>
                     </ul>  
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a>
+                        <li id="cart-btn"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart <span class="badge"></span></a>
                             <div class="dropdown-menu" style="width:400px;">
                                 <div class="panel panel-success">
                                     <div class="panel panel-heading">
@@ -118,6 +115,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="panel panel-info">
+                               <div id = "added-product-msg"></div>
                                 <div class="panel-heading">Products</div>
                                 <div class="panel-body">
                                    <div id="get_product"></div>

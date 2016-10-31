@@ -1,6 +1,7 @@
 <?php
     include "db.php";
-    
+    session_start();
+
     if(isset($_POST["category"])){
         $category_query = "SELECT * from category";
         $run_query = mysqli_query($conn, $category_query);
@@ -70,7 +71,7 @@
                                                 <img class='images' src='custom/imgs/$product_image' alt='$product_image'>
                                             </div>
                                             <div class='panel-heading'>$$product_price
-                                                <button class='btn btn-danger btn-add-to-cart btn-xs'>Add to cart</button>
+                                                <button product_id='$product_id' class='btn btn-danger btn-add-to-cart btn-xs'>Add to cart</button>
                                             </div>
                                             
                                         </div>
@@ -171,5 +172,37 @@
                                     </div>
                 ";
         }
+    }
+
+    if(isset($_POST["addToCart"])){
+        $pid = $_POST["pid"];      
+        
+        if(!isset($_SESSION["cart"])){
+            $_SESSION["cart"] = array();
+        }
+        
+        if(!isset($_SESSION["total_count"])){
+            $_SESSION["total_count"] = 0;
+        }
+        
+        $total_count = $_SESSION["total_count"];
+        $cart = $_SESSION["cart"];
+        $count = 0;
+                
+        if(!empty($cart[$pid])){
+            $count = $cart[$pid];
+            $count = $count + 1;
+        }else{
+            $count = 1;
+        }
+        
+        $total_count++;
+        $_SESSION["total_count"] = $total_count;
+        
+        $cart[$pid] = $count;
+        $_SESSION["cart"] = $cart;
+           
+        echo 
+            $total_count;
     }
 ?>
