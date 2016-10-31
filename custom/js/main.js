@@ -93,4 +93,16 @@ $(function () {
             });
         }
     });
+    
+    $("#signup_btn").click(function(event){
+        event.preventDefault();
+        $.ajax({
+            url: "action_registration.php",
+            method: "POST",
+            data: $("form").serialize(),
+            success: function(data){
+                $("#signup_msg").html(data);
+            }
+        });
+    });
 });
