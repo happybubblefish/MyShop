@@ -232,6 +232,7 @@ $(function () {
                 }
                 
                 getTotalPrice();
+                updatePaypal();
             }
         });
     };
@@ -287,6 +288,7 @@ $(function () {
             success: function(data){
                 $("#total-price").html(data);
                 getTotalCount();
+                updatePaypal();
             }
         });
     });
@@ -314,11 +316,10 @@ $(function () {
                 
                 getTotalPrice();
                 getTotalCount();
+                updatePaypal();
             }
         });
     });
-    
-    
     
     function getTotalCount(){
         $.ajax({
@@ -329,6 +330,19 @@ $(function () {
             },
             success: function(data){
                 $(".badge").html(data);
+            }
+        });
+    }
+    
+    
+    
+    function updatePaypal(){
+        $.ajax({
+            url: "action.php",
+            method: "GET",
+            data: {updatePaypal: 1},
+            success: function(data){
+                $("#paypal").after(data);
             }
         });
     }

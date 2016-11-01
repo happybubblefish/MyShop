@@ -366,4 +366,35 @@
     if(isset($_GET["getTotalCount"])){
         echo isset($_SESSION["total_count"]) ? $_SESSION["total_count"] : 0;
     }
+
+    /* Update Paypal information */
+    if(isset($_GET["updatePaypal"])){
+        if(isset($_SESSION["cart"])){        
+            $cart = $_SESSION["cart"];
+        
+            $keys = array_keys($cart);
+            $x = 0;
+            
+            foreach($keys as $pid){
+                $query = "SELECT * from product where product_id = '$pid'";
+                $run_query = mysqli_query($conn, $query);
+                $x++;
+
+                if($row = mysqli_fetch_array($run_query)){
+                    $product_id = $row["product_id"];
+                    $product_title = $row["product_title"];
+                    $product_image = $row["product_image"];
+                    $product_price = $row["product_price"];
+                    $product_count = $cart[$pid];
+                    
+                    echo '
+                        <input type="hidden" name="item_name_'.$x.'" value="'.$product_title.'">
+                          <input type="hidden" name="item_number_'.$x.'" value="'.$x.'">
+                          <input type="hidden" name="amount_'.$x.'" value="'.$product_price.'">
+                          <input type="hidden" name="quantity_'.$x.'" value="'.$product_count.'">
+                    ';
+                }
+            }
+        }
+    }
 ?>
