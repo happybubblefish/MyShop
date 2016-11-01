@@ -6,7 +6,9 @@ $(function () {
    showCategory();
    showBrand();
    showProducts();
+   showShoppingCart();
    getTotalCount();
+    
     
    function showCategory(){
        $.ajax({
@@ -183,15 +185,22 @@ $(function () {
         });
     });*/
     
-    showShoppingCart();
-    
     function showShoppingCart(){        
         $.ajax({
             url: "action.php",
             method: "GET",
             data: { getCart: 1},
             success: function(data){
-                $("#panel-cart").html(data);
+                if(data === "Empty"){
+                    var content = "<div class='alert alert-danger'>" + 
+                        "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" +
+                        "<b>Your cart is empty.</b></div>";
+                    
+                    $("#cart-info").html(content);
+                }else{
+                    $("#panel-cart").html(data);
+                }
+                
                 getTotalPrice();
             }
         });
@@ -263,7 +272,16 @@ $(function () {
                 pid: pid
             },
             success: function(data){
-                $("#panel-cart").html(data);
+                if(data === "Empty"){
+                    var content = "<div class='alert alert-danger'>" + 
+                        "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" +
+                        "<b>Your cart is empty.</b></div>";
+                    
+                    $("#cart-info").html(content);
+                }else{
+                    $("#panel-cart").html(data);
+                }
+                
                 getTotalPrice();
                 getTotalCount();
             }

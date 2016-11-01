@@ -214,6 +214,11 @@
             $total_price = 0.00;
         
             $keys = array_keys($cart);
+            
+            if(sizeof($keys) == 0){
+                echo "Empty";
+            }
+            
             foreach($keys as $pid){
                 $query = "SELECT * from product where product_id = '$pid'";
                 $run_query = mysqli_query($conn, $query);
@@ -242,10 +247,7 @@
                 }
             }
         }else{
-            echo "<div class='alert alert-danger'>
-                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                    <b>Your cart is empty.</b>
-                </div>";
+            echo "Empty";
         }
     }
 
@@ -305,7 +307,7 @@
             if(sizeof($keys) == 0){
                 $_SESSION["total_price"] = 0;
                 $_SESSION["total_count"] = $total_count;
-                exit();
+                echo "Empty";
             }
             
             foreach($keys as $pid){

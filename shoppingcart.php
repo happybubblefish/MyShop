@@ -87,6 +87,7 @@
         <br>
         
         <div class="container">
+            <div id="cart-info">
             <div class="panel panel-success">
                 <div class="panel panel-heading">
                     <div class="row">Your cart</div>
@@ -123,6 +124,7 @@
                 <div class="panel panel-footer" id="total-price">
                     
                 </div>
+            </div>
             </div>
         </div>
         <script>
