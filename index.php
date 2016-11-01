@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="custom/css/style.css">
         <script src="vendor/js/jquery-1.12.4.min.js"></script>
         <script src="vendor/js/bootstrap.min.js"></script>
-        <script src="custom/js/main.js"></script>
+        
     </head>
     <body>
         <header>
@@ -21,13 +21,13 @@
                         <a href="#" class="navbar-brand">Lin's Shop</a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+                        <li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
                         <li><input type="text" class="form-control" id="search"></li>
                         <li><button class="btn btn-primary" id="search_btn">Search</button></li>
                     </ul>  
                     <ul class="nav navbar-nav navbar-right">
-                       <li id="cart-btn"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Cart <span class="badge"></span></a>
+                       <li id="cart-btn"><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span>Cart <span class="badge">0</span></a>
                        <!-- <li id="cart-btn"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart <span class="badge"></span></a>
                             <div class="dropdown-menu" style="width:800px;">
                                 <div class="panel panel-success">
@@ -151,6 +151,6 @@
         
         
         
-        
+        <script src="custom/js/main.js"></script>
     </body>
 </html>

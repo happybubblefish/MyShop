@@ -19,3 +19,13 @@
 .images{
     height: 200px;
 }
+
+/* Shopping cart */
+.shopping-cart-title,
+.shopping-cart-body{
+    text-align: center;
+}
+
+.shopping-cart-body{
+    margin-top: 15px;
+}

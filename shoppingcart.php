@@ -1,5 +1,9 @@
 <?php 
     session_start();
+
+    if(!isset($_SESSION["user_id"])){
+        header("location:index.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -21,35 +25,18 @@
                         <a href="#" class="navbar-brand">Lin's Shop</a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+                        <li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
                         <li><input type="text" class="form-control" id="search"></li>
                         <li><button class="btn btn-primary" id="search_btn">Search</button></li>
                     </ul>  
                     <ul class="nav navbar-nav navbar-right">
-                       <li id="cart-btn"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Cart <span class="badge"></span></a>
+                       <li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span>Cart <span class="badge">
+                           <?php $response = isset($_SESSION["total_count"]) ? $_SESSION["total_count"] : 0; echo $response; ?>
+                       </span></a>
                        <!-- <li id="cart-btn"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Cart <span class="badge"></span></a>
                             <div class="dropdown-menu" style="width:800px;">
-                                <div class="panel panel-success">
-                                    <div class="panel panel-heading">
-                                        <div class="row">
-                                            <div class="col-md-2">Serial No.</div>
-                                            <div class="col-md-2">Product Id</div>
-                                            <div class="col-md-2">Product Image</div>
-                                            <div class="col-md-2">Product Name</div>
-                                            <div class="col-md-2">Count</div>
-                                            <div class="col-md-2">Unit Price($)</div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-body">
-                                        <div id="panel-cart">
-                                           
-                                       </div> 
-                                    </div>
-                                    <div class="panel panel-footer">
-                                        Total: 
-                                    </div>
-                                </div>
+                                
                             </div>
                         
                         </li>-->
@@ -89,18 +76,57 @@
                             </ul>';
             ;
 }
-                            
-                            
-                        
                         ?>
                         
                     </ul>     
                 </div>
             </div>
         </header>
+        <br>
+        <br>
+        <br>
         
-        
-        
-        
+        <div class="container">
+            <div class="panel panel-success">
+                <div class="panel panel-heading">
+                    <div class="row">Your cart</div>
+                </div>
+                <div class="panel panel-body">
+                    <div class="row shopping-cart-title">
+                        <div class="col-md-2">Product Id</div>
+                        <div class="col-md-2">Product Image</div>
+                        <div class="col-md-2">Product Name</div>
+                        <div class="col-md-2">Count</div>
+                        <div class="col-md-2">Unit Price($)</div>
+                        <div class="col-md-2">Operations</div>
+                    </div>
+                    <div class="row shopping-cart-body">
+<!--
+                        <div class="col-md-2">Product Id</div>
+                        <div class="col-md-2">Product Image</div>
+                        <div class="col-md-2">Product Name</div>
+                        <div class="col-md-2"><input type="number" min="0" id="count" name="count"/></div>
+                        <div class="col-md-2">Unit Price($)</div>
+                        <div class="col-md-2">
+                            <div class="btn-group">
+                                <a href="#"><span class="glyphicon glyphicon-plus"></span></a>&nbsp;
+                                <a href="#"><span class="glyphicon glyphicon-minus"></span></a>&nbsp;
+                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                        </div>
+-->
+                       <div id="panel-cart">
+                       </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-footer" id="total-price">
+                    
+                </div>
+            </div>
+        </div>
+        <script>
+            
+        </script>
     </body>
 </html>

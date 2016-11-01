@@ -17,7 +17,7 @@
                         <a href="#" class="navbar-brand">Lin's Shop</a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+                        <li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
                     </ul>
                 </div>

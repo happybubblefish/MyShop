@@ -171,7 +171,7 @@ $(function () {
         });
     });
     
-    $("#cart-btn").click(function(event){
+    /*$("#cart-btn").click(function(event){
         event.preventDefault();
         
         $.ajax({
@@ -180,6 +180,91 @@ $(function () {
             data: { getCart: 1},
             success: function(data){
                 $("#panel-cart").html(data);
+            }
+        });
+    });*/
+    
+    showShoppingCart();
+    
+    function showShoppingCart(){        
+        $.ajax({
+            url: "action.php",
+            method: "GET",
+            data: { getCart: 1},
+            success: function(data){
+                $("#panel-cart").html(data);
+                getTotal();
+            }
+        });
+    };
+    
+    
+    function getTotal(){
+        $.ajax({
+            url: "action.php",
+            method: "GET",
+            data: {getTotal: 1},
+            success: function(data){
+                $("#total-price").html(data);
+            }
+        });
+    }
+    
+    $("body").on("keyup", ".product-qty", function(){
+        var curr_total = $("#total-price").html();
+        
+        var pid = $(this).attr("pid");
+        var price = $("#price-" + pid).html();
+        var count = $("#count-" + pid).val();
+                
+        $.ajax({
+            url: "action.php",
+            method: "GET",
+            data: {
+                getRealTimeTotal: 1,
+                pid: pid,
+                count: count
+            },
+            success: function(data){
+                $("#total-price").html(data);
+            }
+        });
+    });
+    
+    $("body").on("change", ".product-qty", function(){
+        var curr_total = $("#total-price").html();
+        
+        var pid = $(this).attr("pid");
+        var price = $("#price-" + pid).html();
+        var count = $("#count-" + pid).val();
+                
+        $.ajax({
+            url: "action.php",
+            method: "GET",
+            data: {
+                getRealTimeTotal: 1,
+                pid: pid,
+                count: count
+            },
+            success: function(data){
+                $("#total-price").html(data);
+            }
+        });
+    });
+    
+    $("body").on("click", ".product-delete", function(){
+        var pid = $(this).attr("pid");
+        
+        $.ajax({
+            url: "action.php",
+            method: "POST",
+            data: {
+                deleteProduct: 1,
+                pid: pid
+            },
+            success: function(data){
+                $("#panel-cart").html(data);
+                getTotal();
             }
         });
     });
