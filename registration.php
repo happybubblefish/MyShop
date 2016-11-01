@@ -19,6 +19,12 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
+                        <li><input type="text" class="form-control" id="search"></li>
+                        <li><button class="btn btn-primary" id="search_btn">Search</button></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                       <li id="cart-btn"><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span>Cart <span class="badge">0</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>

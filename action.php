@@ -266,6 +266,8 @@
             $cart[$pid] = $count;
             $_SESSION["cart"] = $cart;
             
+            $total_count = 0;
+            
             $total_price = 0.00;
             $keys = array_keys($cart);
             foreach($keys as $pid){
@@ -276,11 +278,13 @@
                     $product_id = $row["product_id"];
                     $product_price = $row["product_price"];
                     $product_count = $cart[$pid];
+                    $total_count += $product_count;
                     $total_price = $total_price + $product_price * $product_count;
                 }
             }
         }
         
+        $_SESSION["total_count"] = $total_count;
         echo "Total: $".$total_price;
     }
 
@@ -294,11 +298,13 @@
             $_SESSION["cart"] = $cart;
             
             $total_price = 0.00;
+            $total_count = 0;
         
             $keys = array_keys($cart);
             
             if(sizeof($keys) == 0){
                 $_SESSION["total_price"] = 0;
+                $_SESSION["total_count"] = $total_count;
                 exit();
             }
             
@@ -312,9 +318,9 @@
                     $product_image = $row["product_image"];
                     $product_price = $row["product_price"];
                     $product_count = $cart[$pid];
+                    $total_count += $product_count;
                     $total_price = $total_price + $product_price * $product_count;
                     
-                    $_SESSION["total_price"] = $total_price;
                     echo "
                         <div class='row product-row'>
                             <div class='col-md-2 no-center'>$product_id</div>
@@ -329,6 +335,14 @@
                     ";
                 }
             }
+            
+            $_SESSION["total_price"] = $total_price;
+            $_SESSION["total_count"] = $total_count;
         }
+    }
+
+    /* Get total count*/
+    if(isset($_GET["getTotalCount"])){
+        echo isset($_SESSION["total_count"]) ? $_SESSION["total_count"] : 0;
     }
 ?>

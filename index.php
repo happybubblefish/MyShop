@@ -74,7 +74,7 @@
                                 </div>
                             </ul>
                         </li>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>SignUp</a></li>';
+                        <li><a href="registration.php"><span class="glyphicon glyphicon-user"></span>SignUp</a></li>';
                             }else{
     
             
