@@ -115,7 +115,7 @@
                             </div>-->
                             <div id="get_brand"></div>
                              <!--<div class="nav nav-pills nav-stacked">
-                                <li class="active"><a href="#">Brand</a></li>
+                                <li class="active" id="brand-side"><a href="#">Brand</a></li>
                                 <li><a href="#">Categories</a></li>
                                 <li><a href="#">Categories</a></li>
                                 <li><a href="#">Categories</a></li>
@@ -141,6 +141,15 @@
                                         </div>
                                     </div>-->
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <center>
+                                            <ul class="pagination" id="page-no">
+                                                <li><a href="#">1</a></li>
+                                            </ul>
+                                        </center>
+                                    </div>
+                                </div>
                                 <div class="panel-footer">&copy; 2016</div>
                             </div>
                         </div>
@@ -148,9 +157,6 @@
                 </div>
             </aside>
         </div>
-        
-        
-        
         <script src="custom/js/main.js"></script>
     </body>
 </html>

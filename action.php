@@ -8,7 +8,7 @@
         
         echo "
             <div class='nav nav-pills nav-stacked'>
-                <li class='active'><a href='#'><h4>Categories</h4></a></li>
+                <li class='active'><a href='#' class='side-link'><h4>Categories</h4></a></li>
         ";
         
         if(mysqli_num_rows($run_query) > 0){
@@ -32,7 +32,7 @@
         
         echo "
              <div class='nav nav-pills nav-stacked'>
-                <li class='active'><a href='#'><h4>Brand</h4></a></li>
+                <li class='active'><a href='#' class='side-link'><h4>Brand</h4></a></li>
         ";
         
         if(mysqli_num_rows($run_query) > 0){
@@ -49,10 +49,31 @@
         }
     }
 
-    if(isset($_POST["product"])){
-        $product_query = "SELECT * from product order by RAND() limit 0, 9";
-        $run_query = mysqli_query($conn, $product_query);
+    if(isset($_POST["page"])){
+        $query = "SELECT * from product";
+        $run_query = mysqli_query($conn, $query);
+        $count = mysqli_num_rows($run_query);
+        $page_no = ceil($count / 9);
         
+        for($i = 1; $i <= $page_no; $i++){
+            echo "
+                <li><a href='#' page='$i' class='page'>$i</a></li>
+            ";
+        }
+    }
+
+    if(isset($_POST["product"])){
+        $limit = 9;
+        $start = 0;
+        
+        if(isset($_POST["setPage"])){
+            $page_no = $_POST["page_no"];
+            $start = ($page_no - 1) * $limit;
+        }
+        
+        $product_query = "SELECT * from product limit $start, $limit";
+        $run_query = mysqli_query($conn, $product_query);
+
         if(mysqli_num_rows($run_query) > 0){
             while($row = mysqli_fetch_array($run_query)){
                 $product_id = $row["product_id"];
@@ -62,7 +83,7 @@
                 $product_price = $row["product_price"];
                 $product_desc = $row["product_desc"];
                 $product_image = $row["product_image"];
-                
+
                 echo "
                     <div class='col-md-4'>
                                         <div class='panel panel-info'>
@@ -73,10 +94,9 @@
                                             <div class='panel-heading'>$$product_price
                                                 <button product_id='$product_id' class='btn btn-danger btn-add-to-cart btn-xs'>Add to cart</button>
                                             </div>
-                                            
+
                                         </div>
-                                    </div>
-                ";
+                                    </div>";
             }
         }
     }
@@ -107,8 +127,7 @@
                                             </div>
                                             
                                         </div>
-                                    </div>
-                ";
+                                    </div>";
         }
     }
 

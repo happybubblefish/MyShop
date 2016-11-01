@@ -172,6 +172,36 @@ $(function () {
         });
     });
     
+    page();
+    
+    function page(){
+        $.ajax({
+            url: "action.php",
+            method: "POST",
+            data: {page: 1},
+            success: function(data){
+                $("#page-no").html(data);
+            }
+        });
+    }
+    
+    $("body").on("click", ".page", function(){
+        var page_no = $(this).attr("page");
+        
+        $.ajax({
+            url: "action.php",
+            method: "POST",
+            data: {
+                product: 1,
+                setPage: 1,
+                page_no: page_no
+            },
+            success: function(data){
+                $("#get_product").html(data);
+            }
+        });
+    });
+    
     /*$("#cart-btn").click(function(event){
         event.preventDefault();
         

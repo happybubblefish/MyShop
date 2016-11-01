@@ -29,3 +29,7 @@
 .shopping-cart-body{
     margin-top: 15px;
 }
+
+.side-link:hover{
+    cursor: default;
+}
