@@ -1,7 +1,11 @@
 <?php
-    $servername = "zlwltechcom.ipagemysql.com";
+    /*$servername = "zlwltechcom.ipagemysql.com";
     $username = "linshop";
-    $password = "linshop";
+    $password = "linshop";*/
+
+    $servername = "127.0.0.1";
+    $username = "root";
+    $password = "root";
     $db = "linshop";
 
     $conn = mysqli_connect($servername, $username, $password, $db);
